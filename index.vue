@@ -67,7 +67,7 @@
                   value: 'id',
                   label: 'name',
                   emitPath: false,
-                  checkStrictly: true,
+                  checkStrictly: false,
                 }"
                 class="item-width"
                 placeholder="selectnode"
