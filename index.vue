@@ -31,68 +31,44 @@
               ></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="related Feature:" prop="featureIdList">
-            <el-select
-              v-model="state.form.featureIdList"
-              filterable
-              remote
+          <el-form-item label="node:" prop="orgIdList">
+            <org-tree-cascader
+              :onlyAuthorized="true"
+              :defaultProp="{
+                expandTrigger: ExpandTrigger.HOVER,
+                multiple: true,
+                value: 'id',
+                label: 'name',
+                emitPath: false,
+                checkStrictly: true,
+              }"
+              class="item-width"
+              placeholder="selectnode"
+              @updateOrgListValue="(handleUpdateOrgIdList as any)"
+              ref="orgTreeCascaderRef"
+            ></org-tree-cascader>
+            <!-- <el-select
+              v-model="state.form.orgList"
+              :loading="state.orgLoading"
               multiple
               collapse-tags
               clearable
-              reserve-keyword
+              placeholder="selectnode"
               size="mini"
-              placeholder="keyword"
               class="item-width"
               popper-class="exp-list-filter-select"
-              :remote-method="featureRemoteMethod"
-              :loading="state.featureLoading"
             >
               <el-option
-                v-for="item in state.featureIdList"
+                v-for="item in state.orgList"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
               ></el-option>
-            </el-select>
+            </el-select> -->
           </el-form-item>
         </div>
         <transition name="filter">
           <div v-show="state.isShowAll" class="filter-form-advanced">
-            <el-form-item label="node:" prop="orgIdList">
-              <org-tree-cascader
-                :onlyAuthorized="true"
-                :defaultProp="{
-                  expandTrigger: ExpandTrigger.HOVER,
-                  multiple: true,
-                  value: 'id',
-                  label: 'name',
-                  emitPath: false,
-                  checkStrictly: true,
-                }"
-                class="item-width"
-                placeholder="selectnode"
-                @updateOrgListValue="(handleUpdateOrgIdList as any)"
-                ref="orgTreeCascaderRef"
-              ></org-tree-cascader>
-              <!-- <el-select
-                v-model="state.form.orgList"
-                :loading="state.orgLoading"
-                multiple
-                collapse-tags
-                clearable
-                placeholder="selectnode"
-                size="mini"
-                class="item-width"
-                popper-class="exp-list-filter-select"
-              >
-                <el-option
-                  v-for="item in state.orgList"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                ></el-option>
-              </el-select> -->
-            </el-form-item>
             <el-form-item label="owner:" prop="admin">
               <el-select
                 v-model="state.form.admin"
