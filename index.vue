@@ -31,33 +31,6 @@
               ></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="related Feature:" prop="featureIdList">
-            <el-select
-              v-model="state.form.featureIdList"
-              filterable
-              remote
-              multiple
-              collapse-tags
-              clearable
-              reserve-keyword
-              size="mini"
-              placeholder="keyword"
-              class="item-width"
-              popper-class="exp-list-filter-select"
-              :remote-method="featureRemoteMethod"
-              :loading="state.featureLoading"
-            >
-              <el-option
-                v-for="item in state.featureIdList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-        </div>
-        <transition name="filter">
-          <div v-show="state.isShowAll" class="filter-form-advanced">
             <el-form-item label="node:" prop="orgIdList">
               <org-tree-cascader
                 :onlyAuthorized="true"
@@ -93,6 +66,9 @@
                 ></el-option>
               </el-select> -->
             </el-form-item>
+        </div>
+        <transition name="filter">
+          <div v-show="state.isShowAll" class="filter-form-advanced">
             <el-form-item label="owner:" prop="admin">
               <el-select
                 v-model="state.form.admin"
