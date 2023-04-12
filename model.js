@@ -95,6 +95,19 @@ const manufacturerInfo = {
                       config: {
                         valueFormat: 'YYYY-MM-DD',
                       },
+                      restriction: {
+                        type: 'object',
+                        conditions: [
+                          {
+                            field: 'longTermSetup',
+                            operator: '=',
+                            value: {
+                              type: 'fieldValue',
+                              sourceField: 'enableLongTerm',
+                            },
+                          },
+                        ],
+                      },
                     },
                     {
                       name: 'file',
